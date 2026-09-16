@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autour d'une Broche - Restaurant français à Mérignac</title>
+  <meta name="description" content="Découvrez Autour d'une Broche à Mérignac : poulet fermier, travers de porc et accueil chaleureux. Note 4,8/5. Commandez au 05 56 70 24 65.">
+  <meta name="keywords" content="restaurant français Mérignac, cuisine traditionnelle Mérignac, broche Mérignac, restaurant convivial Mérignac, repas de groupe Mérignac, viande à la broche Bordeaux">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #F4A28C;
+      --secondary: #B9A7E0;
+      --background: #FFF9F0;
+      --text: #3E3A4A;
+      --cta: #7BC9A6;
+      --font-heading: 'Fredoka', sans-serif;
+      --font-body: 'Nunito Sans', sans-serif;
+      --radius: 9999px;
+      --radius-card: 24px;
+      --spacing-section: 100px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      line-height: 1.2;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ===== NAVIGATION ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 249, 240, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      box-shadow: 0 2px 20px rgba(62, 58, 74, 0.08);
+    }
+
+    .nav-logo {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    nav ul li a {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: var(--primary);
+    }
+
+    nav ul li a.cta {
+      background: var(--cta);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    nav ul li a.cta:hover {
+      background: #5fb88e;
+      transform: translateY(-1px);
+    }
+
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .burger span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* Mobile nav */
+    @media (max-width: 767px) {
+      .burger {
+        display: flex;
+      }
+
+      nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: rgba(255, 249, 240, 0.98);
+        padding: 24px;
+        gap: 20px;
+        box-shadow: 0 8px 30px rgba(62, 58, 74, 0.12);
+      }
+
+      nav ul.open {
+        display: flex;
+      }
+
+      nav ul li a.cta {
+        display: inline-block;
+      }
+    }
+
+    @media (min-width: 768px) {
+      nav ul {
+        display: flex !important;
+        flex-direction: row;
+        position: static;
+        background: none;
+        padding: 0;
+        box-shadow: none;
+      }
+    }
+
+    /* ===== BUTTONS ===== */
+    .cta {
+      display: inline-block;
+      background: var(--cta);
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+      box-shadow: 0 4px 20px rgba(123, 201, 166, 0.35);
+    }
+
+    .cta:hover {
+      background: #5fb88e;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(123, 201, 166, 0.45);
+    }
+
+    .cta-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--primary);
+      padding: 13px 30px;
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      border: 2px solid var(--primary);
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s, transform 0.2s;
+    }
+
+    .cta-secondary:hover {
+      background: var(--primary);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* ===== SECTION COMMON ===== */
+    section {
+      padding: var(--spacing-section) 24px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      margin-bottom: 12px;
+    }
+
+    .section-heading {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .section-text {
+      font-size: 1.05rem;
+      color: var(--text);
+      opacity: 0.85;
+      max-width: 640px;
+    }
+
+    /* ===== HERO ===== */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 24px;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('assets/hero.jpg');
+      background-size: cover;
+      background-position: center;
+      z-index: 0;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(62,58,74,0.45) 0%, rgba(62,58,74,0.6) 100%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.4);
+      color: #fff;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      border-radius: var(--radius);
+      margin-bottom: 24px;
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-content h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(3rem, 9vw, 6rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    .hero-content .hero-sub {
+      font-family: var(--font-body);
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .hero-content p {
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-ctas .cta-white {
+      display: inline-block;
+      background: #fff;
+      color: var(--text);
+      padding: 14px 32px;
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .hero-ctas .cta-white:hover {
+      background: var(--background);
+      transform: translateY(-2px);
+    }
+
+    /* ===== ABOUT ===== */
+    #apropos {
+      background: #fff;
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .about-text .section-text {
+      max-width: 100%;
+      margin-bottom: 28px;
+    }
+
+    .about-image {
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      box-shadow: 0 12px 50px rgba(62,58,74,0.12);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+    }
+
+    .about-stats {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text);
+      opacity: 0.7;
+      font-weight: 600;
+    }
+
+    @media (min-width: 768px) {
+      .about-inner {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* ===== FEATURED MENU ===== */
+    #specialites {
+      background: var(--background);
+    }
+
+    .menu-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .menu-header .section-text {
+      margin: 0 auto;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    @media (min-width: 600px) {
+      .menu-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .menu-card {
+      background: #fff;
+      border-radius: var(--radius-card);
+      padding: 40px 32px;
+      box-shadow: 0 6px 30px rgba(62,58,74,0.07);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 50px rgba(62,58,74,0.13);
+    }
+
+    .menu-card-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .menu-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .menu-card p {
+      font-size: 0.95rem;
+      color: var(--text);
+      opacity: 0.8;
+      line-height: 1.7;
+    }
+
+    .menu-note {
+      text-align: center;
+      margin-top: 48px;
+      font-size: 0.95rem;
+      color: var(--text);
+      opacity: 0.7;
+      font-style: italic;
+    }
+
+    .menu-cta-wrap {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    /* ===== REVIEWS ===== */
+    #avis {
+      background: #fff;
+    }
+
+    .reviews-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .reviews-rating-summary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .rating-big {
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .rating-stars-big {
+      display: flex;
+      gap: 4px;
+    }
+
+    .star {
+      color: #F4A28C;
+      font-size: 1.4rem;
+    }
+
+    .rating-count {
+      font-size: 0.9rem;
+      color: var(--text);
+      opacity: 0.6;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    @media (min-width: 768px) {
+      .reviews-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .review-card {
+      background: var(--background);
+      border-radius: var(--radius-card);
+      padding: 36px 32px;
+      box-shadow: 0 4px 20px rgba(62,58,74,0.06);
+    }
+
+    .review-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+
+    .review-text {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 20px;
+      white-space: pre-line;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .review-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      color: #fff;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .review-author-info strong {
+      display: block;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .review-author-info span {
+      font-size: 0.8rem;
+      color: var(--text);
+      opacity: 0.55;
+    }
+
+    /* ===== GALLERY ===== */
+    #galerie {
+      background: var(--background);
+    }
+
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 16px;
+    }
+
+    .gallery-item {
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      box-shadow: 0 6px 25px rgba(62,58,74,0.1);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.04);
+    }
+
+    .gallery-item:nth-child(1) {
+      grid-column: 1 / 2;
+      grid-row: 1 / 3;
+      height: 400px;
+    }
+
+    .gallery-item:nth-child(2) {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+      height: 190px;
+    }
+
+    .gallery-item:nth-child(3) {
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+      height: 190px;
+    }
+
+    @media (max-width: 600px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-item:nth-child(1),
+      .gallery-item:nth-child(2),
+      .gallery-item:nth-child(3) {
+        grid-column: 1;
+        grid-row: auto;
+        height: 220px;
+      }
+    }
+
+    /* ===== HOURS & LOCATION ===== */
+    #horaires {
+      background: #fff;
+    }
+
+    .hours-location-inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    @media (min-width: 768px) {
+      .hours-location-inner {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .hours-block h3 {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .hours-table tr {
+      border-bottom: 1px solid rgba(62,58,74,0.08);
+    }
+
+    .hours-table tr:last-child {
+      border-bottom: none;
+    }
+
+    .hours-table td {
+      padding: 12px 0;
+      font-size: 0.95rem;
+    }
+
+    .hours-table td:first-child {
+      font-weight: 700;
+      color: var(--text);
+      text-transform: capitalize;
+      width: 110px;
+    }
+
+    .hours-table td:last-child {
+      color: var(--text);
+      opacity: 0.8;
+    }
+
+    .hours-table tr.closed td {
+      opacity: 0.4;
+    }
+
+    .location-block h3 {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    .location-info {
+      margin-bottom: 24px;
+    }
+
+    .location-info p {
+      font-size: 0.95rem;
+      color: var(--text);
+      opacity: 0.85;
+      margin-bottom: 8px;
+    }
+
+    .location-info a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .map-embed {
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      box-shadow: 0 6px 25px rgba(62,58,74,0.1);
+    }
+
+    .map-embed iframe {
+      width: 100%;
+      height: 260px;
+      border: none;
+      display: block;
+    }
+
+    /* ===== CONTACT FORM ===== */
+    #contact {
+      background: var(--background);
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    @media (min-width: 768px) {
+      .contact-inner {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+      }
+    }
+
+    .contact-info h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .contact-info p {
+      font-size: 1rem;
+      color: var(--text);
+      opacity: 0.8;
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .contact-detail-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-detail-text {
+      font-size: 0.95rem;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .contact-detail-text a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .contact-detail-text a:hover {
+      color: var(--primary);
+    }
+
+    .contact-form-wrap {
+      background: #fff;
+      border-radius: var(--radius-card);
+      padding: 40px 32px;
+      box-shadow: 0 8px 40px rgba(62,58,74,0.09);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border: 2px solid rgba(62,58,74,0.12);
+      border-radius: 16px;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--background);
+      transition: border-color 0.3s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--primary);
+    }
+
+    .form-group textarea {
+      height: 130px;
+      resize: vertical;
+    }
+
+    .form-submit {
+      width: 100%;
+      text-align: center;
+    }
+
+    .form-submit .cta {
+      width: 100%;
+      font-size: 1rem;
+    }
+
+    /* ===== TRUST SIGNALS ===== */
+    #confiance {
+      background: linear-gradient(135deg, var(--primary) 0%, #f0b89a 100%);
+    }
+
+    .trust-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .trust-header .section-label {
+      color: rgba(255,255,255,0.8);
+    }
+
+    .trust-header .section-heading {
+      color: #fff;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    @media (min-width: 600px) {
+      .trust-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .trust-item {
+      background: rgba(255,255,255,0.2);
+      border-radius: var(--radius-card);
+      padding: 28px 20px;
+      text-align: center;
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.3);
+      transition: transform 0.3s;
+    }
+
+    .trust-item:hover {
+      transform: translateY(-4px);
+    }
+
+    .trust-icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .trust-item p {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #fff;
+      line-height: 1.4;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.85);
+      padding: 60px 24px 32px;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    @media (min-width: 768px) {
+      .footer-inner {
+        grid-template-columns: 2fr 1fr 1fr;
+      }
+    }
+
+    .footer-brand .nav-logo {
+      color: var(--primary);
+      font-size: 1.6rem;
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    .footer-brand p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      opacity: 0.75;
+      margin-bottom: 20px;
+    }
+
+    .footer-social a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .footer-social a:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col ul li a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--primary);
+    }
+
+    .footer-col p {
+      font-size: 0.9rem;
+      opacity: 0.7;
+      line-height: 1.7;
+    }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 40px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-bottom p {
+      font-size: 0.8rem;
+      opacity: 0.5;
+    }
+
+    /* ===== FADE-IN ANIMATION ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== SCROLL TOP ===== */
+    .scroll-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--cta);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(123,201,166,0.4);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 999;
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .scroll-top:hover {
+      transform: translateY(-3px);
+    }
+  
+/* ── GARDE-FOU NAV (post-traitement deterministe, pas le LLM) ────────────────
+   Le modele produit typiquement `nav ul.open { flex-direction:column }` SANS
+   media query. Sa specificite (0,2,1) bat la regle desktop `nav ul` (0,0,2)
+   quand celle-ci n'a pas !important sur flex-direction : au retour en desktop
+   apres ouverture du burger, le menu reste empile en colonne (menu casse).
+   Cette regle force l'etat desktop quel que soit l'etat de .open. */
+@media (min-width: 768px) {
+  nav ul, nav ul.open, nav.open ul, nav ul[data-open="true"] {
+    flex-direction: row !important;
+    position: static !important;
+    display: flex !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    width: auto !important;
+  }
+  .burger, button.burger, .nav-toggle, #burger, .burger-menu { display: none !important; }
+}
+</style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav aria-label="Navigation principale">
+    <a href="#hero" class="nav-logo">Autour d'une Broche</a>
+    <button class="burger" aria-label="Ouvrir le menu" id="burger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul id="nav-menu">
+      <li><a href="#apropos">À propos</a></li>
+      <li><a href="#specialites">Spécialités</a></li>
+      <li><a href="#avis">Avis</a></li>
+      <li><a href="#galerie">Galerie</a></li>
+      <li><a href="#horaires">Horaires</a></li>
+      <li><a href="#contact" class="cta" aria-label="Réserver une table">Réserver une table</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" aria-label="Accueil">
+    <div class="hero-bg" role="img" aria-label="Photo du restaurant Autour d'une Broche"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Restaurant français à Mérignac</div>
+      <h1>Autour d'une Broche</h1>
+      <p class="hero-sub">Cuisine traditionnelle française</p>
+      <p>Savourez nos plats traditionnels, dont notre fameux poulet fermier et notre travers de porc fondant. Une expérience conviviale vous attend.</p>
+      <div class="hero-ctas">
+        <a href="tel:+33556702465" class="cta" aria-label="Appelez-nous au 05 56 70 24 65">Appelez-nous au 05 56 70 24 65</a>
+        <a href="#specialites" class="hero-ctas cta-white" aria-label="Découvrir notre carte">Découvrir notre carte</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- À PROPOS -->
+  <section id="apropos" aria-label="À propos de nous">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-text fade-in">
+          <p class="section-label">Notre histoire</p>
+          <h2 class="section-heading">À propos de nous</h2>
+          <p class="section-text">Situé au 17 Av. de l'Alouette à Mérignac, Autour d'une Broche est un restaurant français qui met à l'honneur des produits de qualité. Notre équipe vous réserve un accueil chaleureux et une ambiance sympathique. Que ce soit pour un déjeuner ou un dîner, venez découvrir nos spécialités à la broche.</p>
+          <div class="about-stats">
+            <div class="stat-item">
+              <span class="stat-number">4,8/5</span>
+              <span class="stat-label">Note moyenne</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">97</span>
+              <span class="stat-label">Avis clients</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Fait maison</span>
+            </div>
+          </div>
+          <br>
+          <a href="#contact" class="cta" aria-label="Réserver une table">Réserver une table</a>
+        </div>
+        <div class="about-image fade-in">
+          <img src="assets/gallery-1.jpg" alt="Ambiance chaleureuse du restaurant Autour d'une Broche à Mérignac" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPÉCIALITÉS -->
+  <section id="specialites" aria-label="Nos spécialités">
+    <div class="container">
+      <div class="menu-header fade-in">
+        <p class="section-label">À la carte</p>
+        <h2 class="section-heading">Nos spécialités</h2>
+        <p class="section-text">Des plats généreux, préparés avec des produits frais et de saison, rôtis à la broche selon la tradition française.</p>
+      </div>
+      <div class="menu-grid">
+        <div class="menu-card fade-in">
+          <div class="menu-card-icon">🍗</div>
+          <h3>Poulet fermier</h3>
+          <p>Un poulet fermier fameux, rôti à la broche. Doré à la perfection, tendre et savoureux, il est la fierté de notre cuisine.</p>
+        </div>
+        <div class="menu-card fade-in">
+          <div class="menu-card-icon">🥩</div>
+          <h3>Travers de porc</h3>
+          <p>D'une tendresse incroyable, servi avec des assiettes généreusement garnies. Un plat qui ravit les amateurs de viande fondante.</p>
+        </div>
+      </div>
+      <p class="menu-note">Découvrez notre carte complète sur place. Nos plats varient selon les arrivages et les saisons.</p>
+      <div class="menu-cta-wrap fade-in">
+        <a href="tel:+33556702465" class="cta" aria-label="Réserver une table par téléphone">Réserver une table</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVIS CLIENTS -->
+  <section id="avis" aria-label="Avis de nos clients">
+    <div class="container">
+      <div class="reviews-header fade-in">
+        <p class="section-label">Ce qu'ils disent</p>
+        <h2 class="section-heading">Avis de nos clients</h2>
+        <div class="reviews-rating-summary">
+          <span class="rating-big">4,8</span>
+          <div>
+            <div class="rating-stars-big">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+            </div>
+            <p class="rating-count">Basé sur 97 avis Google</p>
+          </div>
+        </div>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card fade-in">
+          <div class="review-stars">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+          </div>
+          <p class="review-text">Quelle agréable découverte
+Nous sommes arrivés à 14h00 et nous avons demandé s'il était encore possible de déjeuner et avec un grand sourire nous avons étés remarquablement accueillis
+Le poulet fermier est fameux et le travers de porc d'une tendresse incroyable et les assiettes tellement garnies que nous avons eu du mal à finir mais nous l'avons fait avec plaisir
+Vraiment à découvrir pour la qualité des produits et de l'accueil</p>
+          <div class="review-author">
+            <div class="review-avatar">FM</div>
+            <div class="review-author-info">
+              <strong>Franck Monseur</strong>
+              <span>il y a 3 semaines</span>
+            </div>
+          </div>
+        </div>
+        <div class="review-card fade-in">
+          <div class="review-stars">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+          </div>
+          <p class="review-text">Achat d'un poulet rôti vraiment délicieux.
+Très bonne ambiance, très sympa avec la clientèle</p>
+          <div class="review-author">
+            <div class="review-avatar">NN</div>
+            <div class="review-author-info">
+              <strong>nono nono</strong>
+              <span>il y a une semaine</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section id="galerie" aria-label="Galerie photos">
+    <div class="container">
+      <div class="gallery-header fade-in">
+        <p class="section-label">En images</p>
+        <h2 class="section-heading">Galerie</h2>
+        <p class="section-text" style="margin: 0 auto;">Découvrez l'ambiance de notre restaurant à travers nos photos.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item fade-in">
+          <img src="assets/hero.jpg" alt="Plats rôtis à la broche au restaurant Autour d'une Broche" loading="lazy">
+        </div>
+        <div class="gallery-item fade-in">
+          <img src="assets/gallery-1.jpg" alt="Ambiance conviviale du restaurant Autour d'une Broche à Mérignac" loading="lazy">
+        </div>
+        <div class="gallery-item fade-in">
+          <img src="assets/gallery-2.jpg" alt="Spécialités maison du restaurant Autour d'une Broche" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HORAIRES & LOCALISATION -->
+  <section id="horaires" aria-label="Horaires et localisation">
+    <div class="container">
+      <div class="fade-in" style="text-align:center; margin-bottom: 56px;">
+        <p class="section-label">Nous trouver</p>
+        <h2 class="section-heading">Horaires et localisation</h2>
+      </div>
+      <div class="hours-location-inner">
+        <div class="hours-block fade-in">
+          <h3>Nos horaires d'ouverture</h3>
+          <table class="hours-table" aria-label="Tableau des horaires d'ouverture">
+            <tbody>
+              <tr class="closed">
+                <td>Lundi</td>
+                <td>Fermé</td>
+              </tr>
+              <tr>
+                <td>Mardi</td>
+                <td>10:00 – 14:30, 17:30 – 21:00</td>
+              </tr>
+              <tr>
+                <td>Mercredi</td>
+                <td>10:00 – 14:30, 17:30 – 21:00</td>
+              </tr>
+              <tr>
+                <td>Jeudi</td>
+                <td>10:00 – 14:30, 17:30 – 21:00</td>
+              </tr>
+              <tr>
+                <td>Vendredi</td>
+                <td>10:00 – 14:30, 17:30 – 21:00</td>
+              </tr>
+              <tr>
+                <td>Samedi</td>
+                <td>10:00 – 14:30</td>
+              </tr>
+              <tr>
+                <td>Dimanche</td>
+                <td>10:00 – 14:30</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="location-block fade-in">
+          <h3>Nous rendre visite</h3>
+          <div class="location-info">
+            <p>📍 17 Av. de l'Alouette, 33700 Mérignac, France</p>
+            <p>📞 <a href="tel:+33556702465" aria-label="Appeler le restaurant">05 56 70 24 65</a></p>
+            <p>✉️ <a href="mailto:rotisserie9.11@gmail.com" aria-label="Envoyer un email">rotisserie9.11@gmail.com</a></p>
+          </div>
+          <div class="map-embed">
+            <iframe
+              src="https://www.google.com/maps?q=17+Av.+de+l'Alouette,+33700+Mérignac,+France&output=embed"
+              title="Carte Google Maps - Autour d'une Broche, 17 Av. de l'Alouette, 33700 Mérignac"
+              allowfullscreen
+              loading="lazy"
+              aria-label="Carte de localisation du restaurant Autour d'une Broche à Mérignac">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULAIRE DE CONTACT -->
+  <section id="contact" aria-label="Contactez-nous">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="contact-info fade-in">
+          <p class="section-label">Nous écrire</p>
+          <h2>Contactez-nous</h2>
+          <p>Pour toute question ou réservation, n'hésitez pas à nous contacter. Nous serons ravis de vous accueillir autour d'une bonne broche.</p>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📞</div>
+            <div class="contact-detail-text">
+              <a href="tel:+33556702465" aria-label="Appeler le restaurant au 05 56 70 24 65">05 56 70 24 65</a>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📍</div>
+            <div class="contact-detail-text">17 Av. de l'Alouette, 33700 Mérignac, France</div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">✉️</div>
+            <div class="contact-detail-text">
+              <a href="mailto:rotisserie9.11@gmail.com" aria-label="Envoyer un email">rotisserie9.11@gmail.com</a>
+            </div>
+          </div>
+          <br>
+          <a href="tel:+33556702465" class="cta" aria-label="Appelez-nous au 05 56 70 24 65">Appelez-nous au 05 56 70 24 65</a>
+        </div>
+        <div class="contact-form-wrap fade-in">
+          <form action="https://checkout.kamkod.com/contact" method="POST" aria-label="Formulaire de contact">
+            <input type="hidden" name="lead_id" value="ChIJj-Wl4E_ZVA0Rhjmb8IZVZms">
+            <div class="form-group">
+              <label for="name">Votre nom</label>
+              <input type="text" id="name" name="name" placeholder="Jean Dupont" required aria-label="Votre nom">
+            </div>
+            <div class="form-group">
+              <label for="email">Votre adresse email</label>
+              <input type="email" id="email" name="email" placeholder="jean.dupont@email.fr" required aria-label="Votre adresse email">
+            </div>
+            <div class="form-group">
+              <label for="message">Votre message</label>
+              <textarea id="message" name="message" placeholder="Votre demande de réservation ou votre question..." required aria-label="Votre message"></textarea>
+            </div>
+            <div class="form-submit">
+              <button type="submit" class="cta" aria-label="Envoyer le message">Envoyer le message</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST SIGNALS -->
+  <section id="confiance" aria-label="Pourquoi nous choisir">
+    <div class="container">
+      <div class="trust-header fade-in">
+        <p class="section-label">Nos engagements</p>
+        <h2 class="section-heading" style="color:#fff;">Pourquoi nous choisir ?</h2>
+      </div>
+      <div class="trust-grid">
+        <div class="trust-item fade-in">
+          <div class="trust-icon">🏆</div>
+          <p>Note de 4,8/5 basée sur 97 avis</p>
+        </div>
+        <div class="trust-item fade-in">
+          <div class="trust-icon">🍽️</div>
+          <p>Fait maison</p>
+        </div>
+        <div class="trust-item fade-in">
+          <div class="trust-icon">🌿</div>
+          <p>Produits frais</p>
+        </div>
+        <div class="trust-item fade-in">
+          <div class="trust-icon">🇫🇷</div>
+          <p>Viandes françaises</p>
+        </div>
+        <div class="trust-item fade-in">
+          <div class="trust-icon">😊</div>
+          <p>Accueil chaleureux</p>
+        </div>
+        <div class="trust-item fade-in">
+          <div class="trust-icon">🕐</div>
+          <p>Service continu</p>
+        </div>
+        <div class="trust-item fade-in">
+          <div class="trust-icon">🌳</div>
+          <p>Terrasse ombragée</p>
+        </div>
+        <div class="trust-item fade-in">
+          <div class="trust-icon">🅿️</div>
+          <p>Parking à proximité</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer aria-label="Pied de page">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#hero" class="nav-logo" aria-label="Retour en haut de page">Autour d'une Broche</a>
+        <p>Autour d'une Broche - Restaurant français à Mérignac. 17 Av. de l'Alouette, 33700 Mérignac. Téléphone : 05 56 70 24 65. Email : rotisserie9.11@gmail.com.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/104993422075418" target="_blank" rel="noopener noreferrer" aria-label="Notre page Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#apropos" aria-label="À propos de nous">À propos</a></li>
+          <li><a href="#specialites" aria-label="Nos spécialités">Spécialités</a></li>
+          <li><a href="#avis" aria-label="Avis clients">Avis clients</a></li>
+          <li><a href="#galerie" aria-label="Galerie photos">Galerie</a></li>
+          <li><a href="#horaires" aria-label="Horaires et localisation">Horaires</a></li>
+          <li><a href="#contact" aria-label="Nous contacter">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Informations</h4>
+        <p>17 Av. de l'Alouette<br>33700 Mérignac, France</p>
+        <br>
+        <p><a href="tel:+33556702465" style="color: var(--primary); text-decoration: none;" aria-label="Appeler le restaurant">05 56 70 24 65</a></p>
+        <br>
+        <p><a href="mailto:rotisserie9.11@gmail.com" style="color: rgba(255,255,255,0.7); text-decoration: none;" aria-label="Envoyer un email">rotisserie9.11@gmail.com</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Autour d'une Broche. Tous droits réservés.</p>
+      <p>Restaurant français à Mérignac.</p>
+    </div>
+  </footer>
+
+  <!-- SCROLL TO TOP -->
+  <button class="scroll-top" id="scrollTop" aria-label="Retour en haut de page">↑</button>
+
+  <script>
+    // BURGER MENU
+    const burger = document.getElementById('burger');
+    const navMenu = document.getElementById('nav-menu');
+
+    burger.addEventListener('click', function() {
+      navMenu.classList.toggle('open');
+      const isOpen = navMenu.classList.contains('open');
+      burger.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Close menu on link click
+    navMenu.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        navMenu.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // FADE-IN INTERSECTION OBSERVER
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    fadeEls.forEach(function(el) {
+      observer.observe(el);
+    });
+
+    // SCROLL TO TOP
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 400) {
+        scrollTopBtn.classList.add('visible');
+      } else {
+        scrollTopBtn.classList.remove('visible');
+      }
+    });
+
+    scrollTopBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+<!-- KAMKOD:DEMO_START -->
+<script>
+(function(){
+  var URL = 'https://checkout.kamkod.com/d/ChIJj-Wl4E_ZVA0Rhjmb8IZVZms';
+  document.addEventListener('click', function(e){
+    var el = e.target.closest('a, button, [role="button"]');
+    if(!el || el.closest('form')) return;               /* formulaire -> endpoint contact */
+    if(el.classList.contains('cta')) { e.preventDefault(); window.location.href = URL; return; }
+    if(el.closest('header nav, nav')) return;           /* navigation interne de la démo */
+    var a = e.target.closest('a');
+    if(!a) return;                                      /* bouton seul hors nav: on laisse */
+    var href = a.getAttribute('href') || '';
+    if(href.charAt(0) === '#') return;                  /* ancres de section */
+    if(/^https?:|^\/\//i.test(href)) return;
+    e.preventDefault(); window.location.href = URL;     /* tel:, mailto:, javascript:… */
+  }, true);
+})();
+</script>
+<div id="kamkod-demo-banner" data-pid="ChIJj-Wl4E_ZVA0Rhjmb8IZVZms" data-echeance="1789709832221"
+     style="position:fixed;bottom:0;left:0;right:0;background:#111;color:#fff;z-index:9999;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;box-shadow:0 -2px 14px rgba(0,0,0,.4);">
+  <div style="max-width:920px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;">
+    <span style="flex:1;min-width:200px;font-size:13px;opacity:.8;">Aperçu de votre futur site</span>
+    <span id="kk-offre" style="font-size:14px;font-variant-numeric:tabular-nums;">Prix de lancement : <b>49,00 €</b> — encore 47h 59min 59s</span>
+    <a href="https://checkout.kamkod.com/d/ChIJj-Wl4E_ZVA0Rhjmb8IZVZms" style="background:#EA580C;color:#fff;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:700;font-size:14px;white-space:nowrap;">Activer mon site</a>
+  </div>
+</div>
+<script>
+/* COMPTE À REBOURS DE LA BANNIÈRE (demande Alex 11/09) : le prospect passe le plus
+   de temps SUR SON SITE — l'urgence doit être ici, pas seulement sur la page de
+   vente après un clic de plus. Même mécanique que la page : fenêtre 48 h, prix de
+   lancement, et le prix plein annoncé une fois la fenêtre passée.
+   L'échéance est EMBARQUÉE à l'injection (aucune dépendance réseau) puis
+   resynchronisée depuis /api/offre toutes les 2 min (une réinitialisation de
+   fenêtre doit se propager à un site déjà déployé). */
+(function(){
+  var b = document.getElementById('kamkod-demo-banner');
+  if(!b) return;
+  var ach = parseInt(b.getAttribute('data-echeance') || '0', 10);
+  var pid = b.getAttribute('data-pid');
+  var el  = document.getElementById('kk-offre');
+  if(!el) return;
+  var T_LAUNCH = "Prix de lancement : <b>%PRIX%</b> — encore %TEMPS%";
+  var T_OVER   = "Le déploiement est passé à <b>%PRIX%</b>";
+  var PRIX_L   = "49,00 €";
+  var PRIX_O   = "98,00 €";
+  function deux(n){ return (n < 10 ? '0' : '') + n; }
+  function hms(s){
+    var h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), x = s % 60;
+    return h + 'h ' + deux(m) + 'min ' + deux(x) + 's';
+  }
+  function rendu(){
+    var s = ach ? Math.floor((ach - Date.now()) / 1000) : 0;
+    if(s > 0){
+      el.innerHTML = T_LAUNCH.replace('%TEMPS%', hms(s)).replace('%PRIX%', PRIX_L);
+    } else {
+      el.innerHTML = T_OVER.replace('%PRIX%', PRIX_O);
+    }
+  }
+  rendu();
+  setInterval(rendu, 1000);
+  function sync(){
+    try{
+      fetch('https://checkout.kamkod.com/api/offre/' + pid, {cache:'no-store'})
+        .then(function(r){ return r.json(); })
+        .then(function(d){
+          if(d && d.echeance_ms){ ach = d.echeance_ms; }
+          if(d && d.prix_lancement){ PRIX_L = d.prix_lancement; }
+          if(d && d.prix_apres){ PRIX_O = d.prix_apres; }
+          rendu();
+        })
+        .catch(function(){});
+    }catch(e){}
+  }
+  setTimeout(sync, 5000);
+  setInterval(sync, 120000);
+})();
+</script>
+<script>
+/* KAMKOD-MESURE v1 — page="site" | mesure agrégée : aucun cookie, aucun identifiant. */
+(function(){
+  try{
+    var PID="ChIJj-Wl4E_ZVA0Rhjmb8IZVZms", PAGE="site";
+    var URL="https://checkout.kamkod.com/api/comportement/"+PID;
+    var vis=0, lastIn=Date.now(), scrollMax=0, clics=0, cta=0, premier=1, vues={};
+    var mobile=/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent||'');
+    function cache(){ return document.visibilityState==='hidden'; }
+    function temps(){ var n=Date.now(); if(!cache() && lastIn){ vis+=n-lastIn; } lastIn=n; }
+    function majScroll(){
+      var h=Math.max(1,(document.documentElement.scrollHeight||0)-window.innerHeight);
+      var p=Math.round(Math.min(100,((window.pageYOffset||window.scrollY||0)/h)*100));
+      if(p>scrollMax){ scrollMax=p; }
+    }
+    function majSections(){
+      var hs=document.querySelectorAll('h1,h2,h3');
+      for(var i=0;i<hs.length && i<40;i++){
+        var r=hs[i].getBoundingClientRect();
+        if(r.top<window.innerHeight && r.bottom>0){
+          var t=(hs[i].textContent||'').replace(/\s+/g,' ').trim().slice(0,60);
+          if(t){ vues[t]=(vues[t]||0)+1; }
+        }
+      }
+    }
+    function estCta(el){ var a=null,n=el;while(n&&n.tagName!=='A'){n=n.parentNode;}
+      a=n;if(!a||!a.getAttribute)return false;
+      var h=a.getAttribute('href')||'';
+      return h.indexOf('/d/')>-1||h.indexOf('checkout.kamkod.com')>-1; }
+    function envoi(force){
+      try{
+        temps();
+        var secs=Object.keys(vues);
+        if(!force && !secs.length && !vis && !clics && !scrollMax){ return; }
+        var corps=JSON.stringify({v:1, page:PAGE, debut:premier?1:0, temps_ms:Math.round(vis),
+          scroll_max:scrollMax, clics:clics, cta_clics:cta, mobile:mobile, sections:secs});
+        var ok=false;
+        try{
+          if(navigator.sendBeacon){ ok=navigator.sendBeacon(URL, corps); }
+          if(!ok){
+            var x=new XMLHttpRequest();
+            x.open('POST',URL,true);
+            x.setRequestHeader('Content-Type','text/plain;charset=UTF-8');
+            x.send(corps); ok=true;
+          }
+        }catch(e){}
+        if(ok){ premier=0; vis=0; clics=0; cta=0; vues={}; }
+      }catch(e){}
+    }
+    window.addEventListener('scroll',function(){try{majScroll();majSections();}catch(e){}},{passive:true});
+    document.addEventListener('click',function(ev){
+      try{ clics++; if(estCta(ev.target)){ cta++; } }catch(e){}
+    },true);
+    document.addEventListener('visibilitychange',function(){
+      try{ if(cache()){ envoi(false); } else { lastIn=Date.now(); } }catch(e){}
+    });
+    window.addEventListener('pagehide',function(){try{envoi(true);}catch(e){}});
+    setTimeout(function(){try{majScroll();majSections();envoi(false);}catch(e){}},3000);
+    setInterval(function(){try{majSections();envoi(false);}catch(e){}},30000);
+  }catch(e){}
+})();
+</script>
+<!-- KAMKOD:DEMO_END -->
+</body>
+</html>
